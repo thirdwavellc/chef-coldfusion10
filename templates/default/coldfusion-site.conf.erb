@@ -42,6 +42,11 @@
 
   DirectoryIndex index.cfm index.html index.cgi index.pl index.php index.xhtml index.htm
 
+  # Rewrite Rules
+  <% node['cf10']['site']['rewrite_rules'].each do |rule, value| %>
+    <%= rule %> <%= value %>
+  <% end if node['cf10']['site']['rewrite_rules'] %>
+
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -87,6 +92,11 @@
   </IfModule>
 
   DirectoryIndex index.cfm index.html index.cgi index.pl index.php index.xhtml index.htm
+
+  # Rewrite Rules
+  <% node['cf10']['site']['rewrite_rules'].each do |rule, value| %>
+    <%= rule %> <%= value %>
+  <% end if node['cf10']['site']['rewrite_rules'] %>
 
   #   SSL Engine Switch:
   #   Enable/Disable SSL for this virtual host.
